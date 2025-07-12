@@ -6,7 +6,7 @@ class AsignacionController
 {
     public function guardar() {}
     public function cargar() {}
-    public function borrar() {}
+    public function modificar() {}
     public function cargarPorProyecto() {}
     public function cargarPorCliente() {}
 }

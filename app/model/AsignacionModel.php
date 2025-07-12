@@ -54,7 +54,6 @@ class ProyectoModel
         $ps->bindParam(":ida", $asignacion->getIdasignacion());
         $ps->execute();
     }
-    public function borrar(Asignacion $asignacion) {} // TODO
     public function cargarPorProyecto($idp)
     {
         $sql = "select * from asignacion where idproducto=:idp";
