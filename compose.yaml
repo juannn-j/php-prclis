@@ -1,0 +1,35 @@
+version: "3"
+services:
+  php:
+    container_name: php
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/html/
+    ports:
+      - 8080:80
+    depends_on:
+      - pgsql
+  pgsql:
+    image: postgres:latest
+    container_name: postgres
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - ./script.sql:/docker-entrypoint-initdb.d/script.sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: managepct
+    ports:
+      - "5432:5432"
+    restart: always
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgsql@email.com
+      PGADMIN_DEFAULT_PASSWORD: 1234
+    ports:
+      - "5050:80"
+    restart: always
