@@ -39,7 +39,7 @@ class ProyectoModel
         }
         return $asignaciones;
     }
-    public function cargarPorProducto($idp)
+    public function cargarPorProyecto($idp)
     {
         $sql = "select * from asignacion where idproducto=:idp";
         $ps = $this->db->prepare($sql);

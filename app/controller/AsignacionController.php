@@ -1,6 +1,12 @@
 <?php
-require_once "./app/model/AsignacionModel.php";
-require_once "./app/model/Asignacion.php";
+require_once "../model/AsignacionModel.php";
+require_once "../model/Asignacion.php";
 
-class AsignacionController {}
+class AsignacionController
+{
+    public function cargar() {}
+    public function guardar() {}
+    public function modificar() {}
+    public function borrar() {}
+}
 ?>
