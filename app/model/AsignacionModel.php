@@ -13,8 +13,10 @@ class ProyectoModel
     public function guardar(Asignacion $asignacion)
     {
         $sql =
-            "insert into asignacion (idproyecto, idcliente) values (:idpro, :idcli)";
+            "insert into asignacion (fechainicio, fechafinal, idproyecto, idcliente) values (:finit, fend, :idpro, :idcli)";
         $ps = $this->db->prepare($sql);
+        $ps->bindParam(":finit", $asignacion->getFechainicio());
+        $ps->bindParam(":fend", $asignacion->getFechafinal());
         $ps->bindParam(":idpro", $asignacion->getIdproyecto());
         $ps->bindParam(":idcli", $asignacion->getIdcliente());
         $ps->execute();
@@ -29,13 +31,51 @@ class ProyectoModel
         foreach ($filas as $f) {
             $asig = new Asignacion();
             $asig->setIdasignacion($f[0]);
-            $asig->setIdproyecto($f[1]);
-            $asig->setIdcliente($f[2]);
+            $asig->setFechainicio($f[1]);
+            $asig->setFechafinal($f[2]);
+            $asig->setIdproyecto($f[3]);
+            $asig->setIdcliente($f[4]);
             array_push($asignaciones, $asig);
         }
         return $asignaciones;
     }
-
-    // TODO: cargar por id
+    public function cargarPorProducto($idp)
+    {
+        $sql = "select * from asignacion where idproducto=:idp";
+        $ps = $this->db->prepare($sql);
+        $ps->bindParam(":idp", $idp);
+        $ps->execute();
+        $filas = $ps->fetchall();
+        $asignaciones = [];
+        foreach ($filas as $f) {
+            $asig = new Asignacion();
+            $asig->setIdasignacion($f[0]);
+            $asig->setFechainicio($f[1]);
+            $asig->setFechafinal($f[2]);
+            $asig->setIdproyecto($f[3]);
+            $asig->setIdcliente($f[4]);
+            array_push($asignaciones, $asig);
+        }
+        return $asignaciones;
+    }
+    public function cargarPorCliente($idc)
+    {
+        $sql = "select * from asignacion where idcliente=:idc";
+        $ps = $this->db->prepare($sql);
+        $ps->bindParam(":idc", $idc);
+        $ps->execute();
+        $filas = $ps->fetchall();
+        $asignaciones = [];
+        foreach ($filas as $f) {
+            $asig = new Asignacion();
+            $asig->setIdasignacion($f[0]);
+            $asig->setFechainicio($f[1]);
+            $asig->setFechafinal($f[2]);
+            $asig->setIdproyecto($f[3]);
+            $asig->setIdcliente($f[4]);
+            array_push($asignaciones, $asig);
+        }
+        return $asignaciones;
+    }
 }
 ?>

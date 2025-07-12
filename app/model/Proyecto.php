@@ -4,8 +4,6 @@ class Proyecto
     private $idproyecto;
     private $nombre;
     private $descripcion;
-    private $fechainicio;
-    protected $fechafinal;
 
     public function getIdproyecto()
     {
@@ -30,22 +28,6 @@ class Proyecto
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-    }
-    public function getFechainicio()
-    {
-        return $this->fechainicio;
-    }
-    public function setFechainicio($fechainicio)
-    {
-        $this->fechainicio = $fechainicio;
-    }
-    public function getFechafinal()
-    {
-        return $this->fechafinal;
-    }
-    public function setFechafinal($fechafinal)
-    {
-        $this->fechafinal = $fechafinal;
     }
 }
 ?>

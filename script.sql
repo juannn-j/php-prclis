@@ -8,8 +8,6 @@ CREATE TABLE proyecto (
     idproyecto SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     descripcion VARCHAR(100) NOT NULL,
-    fechainicio DATE NOT NULL,
-    fechafinal DATE NOT NULL
 );
 
 CREATE TABLE cliente (
@@ -21,6 +19,8 @@ CREATE TABLE cliente (
 
 CREATE TABLE asignacion (
     idasignacion SERIAL PRIMARY KEY,
+    fechainicio DATE NOT NULL,
+    fechafinal DATE NOT NULL
     idproyecto INT NOT NULL,
     idcliente INT NOT NULL,
     CONSTRAINT fk_proyecto_cliente

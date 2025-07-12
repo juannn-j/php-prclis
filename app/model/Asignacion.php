@@ -3,6 +3,8 @@
 class Asignacion
 {
     private $idasignacion;
+    private $fechainicio;
+    private $fechafinal;
     private $idproyecto;
     private $idcliente;
 
@@ -29,6 +31,22 @@ class Asignacion
     public function setIdcliente($idcliente)
     {
         $this->idcliente = $idcliente;
+    }
+    public function getFechainicio()
+    {
+        return $this->fechainicio;
+    }
+    public function setFechainicio($fechainicio)
+    {
+        $this->fechainicio = $fechainicio;
+    }
+    public function getFechafinal()
+    {
+        return $this->fechafinal;
+    }
+    public function setFechafinal($fechafinal)
+    {
+        $this->fechafinal = $fechafinal;
     }
 }
 ?>
