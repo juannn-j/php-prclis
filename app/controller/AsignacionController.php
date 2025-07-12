@@ -4,7 +4,9 @@ require_once "../model/Asignacion.php";
 
 class AsignacionController
 {
+    public function guardar() {}
     public function cargar() {}
+    public function borrar() {}
     public function cargarPorProyecto() {}
     public function cargarPorCliente() {}
 }

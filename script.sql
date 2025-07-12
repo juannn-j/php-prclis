@@ -7,26 +7,23 @@ CREATE TABLE usuario (
 CREATE TABLE proyecto (
     idproyecto SERIAL PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE cliente (
     idcliente SERIAL PRIMARY KEY,
     nombres VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
-    telefono VARCHAR(15) NOT NULL,
+    telefono VARCHAR(15) NOT NULL
 );
 
 CREATE TABLE asignacion (
     idasignacion SERIAL PRIMARY KEY,
     fechainicio DATE NOT NULL,
-    fechafinal DATE NOT NULL
+    fechafinal DATE NOT NULL,
+    estado VARCHAR(20) NOT NULL,
     idproyecto INT NOT NULL,
     idcliente INT NOT NULL,
-    CONSTRAINT fk_proyecto_cliente
-        FOREIGN KEY (idproyecto)
-        REFERENCES proyecto(idproyecto),
-    CONSTRAINT fk_cliente_proyecto
-        FOREIGN KEY (idcliente)
-        REFERENCES cliente(idcliente)
+    CONSTRAINT fk_asignacion_proyecto FOREIGN KEY (idproyecto) REFERENCES proyecto(idproyecto),
+    CONSTRAINT fk_asignacion_cliente FOREIGN KEY (idcliente) REFERENCES cliente(idcliente)
 );

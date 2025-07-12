@@ -13,12 +13,13 @@ class ProyectoModel
     public function guardar(Asignacion $asignacion)
     {
         $sql =
-            "insert into asignacion (fechainicio, fechafinal, idproyecto, idcliente) values (:finit, fend, :idpro, :idcli)";
+            "insert into asignacion (fechainicio, fechafinal, estado, idproyecto, idcliente) values (:finit, :fend, :est, :idp, :id)";
         $ps = $this->db->prepare($sql);
         $ps->bindParam(":finit", $asignacion->getFechainicio());
         $ps->bindParam(":fend", $asignacion->getFechafinal());
-        $ps->bindParam(":idpro", $asignacion->getIdproyecto());
-        $ps->bindParam(":idcli", $asignacion->getIdcliente());
+        $ps->bindParam(":est", $asignacion->getEstado());
+        $ps->bindParam(":idp", $asignacion->getIdproyecto());
+        $ps->bindParam(":idc", $asignacion->getIdcliente());
         $ps->execute();
     }
     public function cargar()
@@ -33,12 +34,27 @@ class ProyectoModel
             $asig->setIdasignacion($f[0]);
             $asig->setFechainicio($f[1]);
             $asig->setFechafinal($f[2]);
-            $asig->setIdproyecto($f[3]);
-            $asig->setIdcliente($f[4]);
+            $asig->setEstado($f[3]);
+            $asig->setIdproyecto($f[4]);
+            $asig->setIdcliente($f[5]);
             array_push($asignaciones, $asig);
         }
         return $asignaciones;
     }
+    public function modificar(Asignacion $asignacion)
+    {
+        $sql =
+            "update asignacion set fechainicio=:finit, fechafinal=:fend, estado=:est, idproyecto=:idp, idcliente=:idc where idasignacion=:ida";
+        $ps = $this->db->prepare($sql);
+        $ps->bindParam(":finit", $asignacion->getFechainicio());
+        $ps->bindParam(":fend", $asignacion->getFechafinal());
+        $ps->bindParam(":est", $asignacion->getEstado());
+        $ps->bindParam(":idp", $asignacion->getIdproyecto());
+        $ps->bindParam(":idc", $asignacion->getIdcliente());
+        $ps->bindParam(":ida", $asignacion->getIdasignacion());
+        $ps->execute();
+    }
+    public function borrar(Asignacion $asignacion) {} // TODO
     public function cargarPorProyecto($idp)
     {
         $sql = "select * from asignacion where idproducto=:idp";
@@ -52,8 +68,9 @@ class ProyectoModel
             $asig->setIdasignacion($f[0]);
             $asig->setFechainicio($f[1]);
             $asig->setFechafinal($f[2]);
-            $asig->setIdproyecto($f[3]);
-            $asig->setIdcliente($f[4]);
+            $asig->setEstado($f[3]);
+            $asig->setIdproyecto($f[4]);
+            $asig->setIdcliente($f[5]);
             array_push($asignaciones, $asig);
         }
         return $asignaciones;
@@ -71,8 +88,9 @@ class ProyectoModel
             $asig->setIdasignacion($f[0]);
             $asig->setFechainicio($f[1]);
             $asig->setFechafinal($f[2]);
-            $asig->setIdproyecto($f[3]);
-            $asig->setIdcliente($f[4]);
+            $asig->setEstado($f[3]);
+            $asig->setIdproyecto($f[4]);
+            $asig->setIdcliente($f[5]);
             array_push($asignaciones, $asig);
         }
         return $asignaciones;
