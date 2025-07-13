@@ -2,7 +2,7 @@
 require_once "../config/DB.php";
 require_once "../model/Asignacion.php";
 
-class ProyectoModel
+class AsignacionModel
 {
     private $db;
     public function __construct()
@@ -13,7 +13,7 @@ class ProyectoModel
     public function guardar(Asignacion $asignacion)
     {
         $sql =
-            "insert into asignacion (fechainicio, fechafinal, estado, idproyecto, idcliente) values (:finit, :fend, :est, :idp, :id)";
+            "insert into asignacion (fechainicio, fechafinal, estado, idproyecto, idcliente) values (:finit, :fend, :est, :idp, :idc)";
         $ps = $this->db->prepare($sql);
         $ps->bindParam(":finit", $asignacion->getFechainicio());
         $ps->bindParam(":fend", $asignacion->getFechafinal());
@@ -54,11 +54,11 @@ class ProyectoModel
         $ps->bindParam(":ida", $asignacion->getIdasignacion());
         $ps->execute();
     }
-    public function cargarPorProyecto($idp)
+    public function cargarPorProyecto(Asignacion $asignacion)
     {
-        $sql = "select * from asignacion where idproducto=:idp";
+        $sql = "select * from asignacion where idproyecto=:idp";
         $ps = $this->db->prepare($sql);
-        $ps->bindParam(":idp", $idp);
+        $ps->bindParam(":idp", $asignacion->getIdproyecto());
         $ps->execute();
         $filas = $ps->fetchall();
         $asignaciones = [];
@@ -74,11 +74,11 @@ class ProyectoModel
         }
         return $asignaciones;
     }
-    public function cargarPorCliente($idc)
+    public function cargarPorCliente(Asignacion $asignacion)
     {
         $sql = "select * from asignacion where idcliente=:idc";
         $ps = $this->db->prepare($sql);
-        $ps->bindParam(":idc", $idc);
+        $ps->bindParam(":idc", $asignacion->getIdcliente());
         $ps->execute();
         $filas = $ps->fetchall();
         $asignaciones = [];

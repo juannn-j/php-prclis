@@ -44,16 +44,16 @@ class ProyectoModel
         $ps->bindParam(":idp", $proyecto->getIdproyecto());
         $ps->execute();
     }
-    public function borrar(Proyecto $proyecto)
+    public function borrar($idp)
     {
         $sql1 = "delete from asignacion where idproyecto=:idp";
         $ps1 = $this->db->prepare($sql1);
-        $ps1->bindParam(":idp", $proyecto->getIdproyecto());
+        $ps1->bindParam(":idp", $idp);
         $ps1->execute();
 
         $sql2 = "delete from proyecto where idproyecto=:idp";
         $ps2 = $this->db->prepare($sql2);
-        $ps2->bindParam(":idp", $proyecto->getIdproyecto());
+        $ps2->bindParam(":idp", $idp);
         $ps2->execute();
     }
 }
