@@ -14,7 +14,7 @@ class UsuarioController
             $model->validar($usuario);
             header("Location: index.php");
         } else {
-            require_once "../view/viewAsignaciones.php";
+            require_once "../view/viewUsuario.php";
         }
     }
 }
