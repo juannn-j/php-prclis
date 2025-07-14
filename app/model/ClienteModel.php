@@ -1,6 +1,6 @@
 <?php
-require_once "../config/DB.php";
-require_once "../model/Cliente.php";
+require_once "config/DB.php";
+require_once "model/Cliente.php";
 
 class ClienteModel
 {

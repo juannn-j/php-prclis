@@ -1,6 +1,6 @@
 <?php
-require_once "../model/UsuarioModel.php";
-require_once "../model/Usuario.php";
+require_once "model/UsuarioModel.php";
+require_once "model/Usuario.php";
 
 class UsuarioController
 {
@@ -14,7 +14,7 @@ class UsuarioController
             $model->validar($usuario);
             header("Location: index.php");
         } else {
-            require_once "../view/viewUsuario.php";
+            require_once "view/viewValidarUsuario.php";
         }
     }
 }

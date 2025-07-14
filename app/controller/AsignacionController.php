@@ -1,6 +1,6 @@
 <?php
-require_once "../model/AsignacionModel.php";
-require_once "../model/Asignacion.php";
+require_once "model/AsignacionModel.php";
+require_once "model/Asignacion.php";
 
 class AsignacionController
 {
@@ -17,14 +17,14 @@ class AsignacionController
             $model->guardar($asignacion);
             header("Location: index.php");
         } else {
-            require_once "../view/viewAsignaciones.php";
+            require_once "view/viewAsignaciones.php";
         }
     }
     public function cargar()
     {
         $model = new AsignacionModel();
         $asignaciones = $model->cargar();
-        require_once "../view/viewCargarAsignaciones.php";
+        require_once "view/viewCargarAsignaciones.php";
     }
     public function modificar()
     {
@@ -40,7 +40,7 @@ class AsignacionController
             $model->modificar($asignacion);
             header("Location: index.php");
         } else {
-            require_once "../view/viewAsignaciones.php";
+            require_once "view/viewAsignaciones.php";
         }
     }
     public function cargarPorProyecto()
@@ -52,7 +52,7 @@ class AsignacionController
             $model->cargarPorProyecto($asignacion);
             header("Location: index.php");
         } else {
-            require_once "../view/viewAsignaciones.php";
+            require_once "view/viewAsignaciones.php";
         }
     }
     public function cargarPorCliente()
@@ -64,7 +64,7 @@ class AsignacionController
             $model->cargarPorCliente($asignacion);
             header("Location: index.php");
         } else {
-            require_once "../view/viewAsignaciones.php";
+            require_once "view/viewAsignaciones.php";
         }
     }
 }

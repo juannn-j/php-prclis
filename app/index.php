@@ -1,10 +1,11 @@
 <?php
-require_once "../controller/UsuarioController.php";
-require_once "../controller/ProyectoController.php";
-require_once "../controller/ClienteController.php";
-require_once "../controller/AsignacionController.php";
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+require_once "controller/UsuarioController.php";
+require_once "controller/ProyectoController.php";
+require_once "controller/ClienteController.php";
+require_once "controller/AsignacionController.php";
 
-$accion = isset($_GET["accion"]) ? $_GET["accion"] : "validarUsuario";
+$accion = isset($_GET["accion"]) ? $_GET["accion"] : "cargarCliente";
 
 switch ($accion) {
     case "validarUsuario":
@@ -39,7 +40,7 @@ switch ($accion) {
         $controller = new ClienteController();
         $controller->modificar();
         break;
-    case "BorrarCliente":
+    case "borrarCliente":
         $controller = new ClienteController();
         $controller->borrar();
         break;

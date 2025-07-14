@@ -1,6 +1,6 @@
 <?php
-require_once "../config/DB.php";
-require_once "../model/Asignacion.php";
+require_once "config/DB.php";
+require_once "model/Asignacion.php";
 
 class AsignacionModel
 {

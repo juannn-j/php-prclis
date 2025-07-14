@@ -1,6 +1,6 @@
 <?php
-require_once "../model/ProyectoModel.php";
-require_once "../model/Proyecto.php";
+require_once "model/ProyectoModel.php";
+require_once "model/Proyecto.php";
 
 class ProyectoController
 {
@@ -13,7 +13,7 @@ class ProyectoController
             $proyecto->setDescripcion($_POST["txtDes"]);
             $model->guardar($proyecto);
         } else {
-            require_once "../view/viewProyectos.php";
+            require_once "view/viewProyectos.php";
         }
     }
 
@@ -21,7 +21,7 @@ class ProyectoController
     {
         $model = new ProyectoModel();
         $proyectos = $model->cargar();
-        require_once "../view/viewCargarProyectos.php";
+        require_once "view/viewCargarProyectos.php";
     }
 
     public function modificar()
@@ -34,7 +34,7 @@ class ProyectoController
             $proyecto->setIdproyecto($_POST["txtIdp"]);
             $model->modificar($proyecto);
         } else {
-            require_once "../view/viewProyectos.php";
+            require_once "view/viewProyectos.php";
         }
     }
 
