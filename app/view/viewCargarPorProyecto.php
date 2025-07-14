@@ -20,8 +20,8 @@
             </select>
             <input type="submit" value="Ver Asignaciones">
         </form>
-        <hr>
         <?php if (isset($asignaciones)) { ?>
+        <button type="button" onclick="window.print()">Imprimir reporte</button>
         <table border="1">
             <thead>
                 <tr>

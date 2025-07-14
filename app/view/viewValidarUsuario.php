@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <form action="index.php?accion=validarUsuario" method="post">
+        <input type="text" name="txtCorreo" placeHolder="Correo">
+        <input type="password" name="txtPasswd" placeHolder="Contraseña">
+        <input type="submit" value="Ingresar">
+    </form>
 </body>
 </html>

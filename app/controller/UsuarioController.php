@@ -11,8 +11,15 @@ class UsuarioController
             $usuario = new Usuario();
             $usuario->setCorreo($_POST["txtCorreo"]);
             $usuario->setPasswd($_POST["txtPasswd"]);
-            $model->validar($usuario);
-            header("Location: index.php");
+            if ($model->validar($usuario)) {
+                $_SESSION['usuario'] = $usuario->getCorreo();
+                $_SESSION['logeado'] = true;
+                header("Location: index.php?accion=cargarMenu");
+                exit;
+            } else {
+                echo '<script>alert("Usuario o contraseña incorrectos");</script>';
+                require_once "view/viewValidarUsuario.php";
+            }
         } else {
             require_once "view/viewValidarUsuario.php";
         }

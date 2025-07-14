@@ -1,17 +1,31 @@
 <?php
+session_start();
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 require_once "controller/UsuarioController.php";
 require_once "controller/ProyectoController.php";
 require_once "controller/ClienteController.php";
 require_once "controller/AsignacionController.php";
 
-$accion = isset($_GET["accion"]) ? $_GET["accion"] : "cargarCliente";
+$accion = isset($_GET["accion"]) ? $_GET["accion"] : "validarUsuario";
+
+if (!isset($_SESSION['usuario']) && $accion !== 'validarUsuario' && $accion !== 'logout') {
+    header('Location: index.php?accion=validarUsuario');
+    exit;
+}
 
 switch ($accion) {
     case "validarUsuario":
         $controller = new UsuarioController();
         $controller->validar();
         break;
+    case "cargarMenu":
+        header("Location: menu.php");
+        break;
+    case "logout":
+        session_unset();
+        session_destroy();
+        header("Location: index.php?accion=validarUsuario");
+        exit;
     case "guardarProyecto":
         $controller = new ProyectoController();
         $controller->guardar();
