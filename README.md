@@ -35,6 +35,9 @@ El cliente necesita de los siguientes modulos
 
 ## Imagenes
 
+### Base de datos
+![DB](assets/db.png)
+
 ### Autenticación y Navegación
 ![Login](assets/login.png)
 
