@@ -12,8 +12,9 @@ class ProyectoController
             $proyecto->setNombre($_POST["txtNom"]);
             $proyecto->setDescripcion($_POST["txtDes"]);
             $model->guardar($proyecto);
+            header("Location: index.php?accion=cargarProyecto");
         } else {
-            require_once "view/viewProyectos.php";
+            require_once "view/viewGuardarProyectos.php";
         }
     }
 
@@ -29,20 +30,28 @@ class ProyectoController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $model = new ProyectoModel();
             $proyecto = new Proyecto();
+            $proyecto->setIdproyecto($_POST["cbxIdp"]);
             $proyecto->setNombre($_POST["txtNom"]);
             $proyecto->setDescripcion($_POST["txtDes"]);
-            $proyecto->setIdproyecto($_POST["txtIdp"]);
             $model->modificar($proyecto);
+            header("Location: index.php?accion=cargarProyecto");
         } else {
-            require_once "view/viewProyectos.php";
+            $model = new ProyectoModel();
+            $proyectos = $model->cargar();
+            require_once "view/viewModificarProyectos.php";
         }
     }
 
     public function borrar()
     {
-        if (isset($_GET["idp"])) {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $model = new ProyectoModel();
-            $model->borrar($_GET["idp"]);
+            $model->borrar($_POST["cbxIdp"]);
+            header("Location: index.php?accion=cargarProyecto");
+        } else {
+            $model = new ProyectoModel();
+            $proyectos = $model->cargar();
+            require_once "view/viewBorrarProyectos.php";
         }
     }
 }

@@ -56,6 +56,10 @@ switch ($accion) {
         $controller = new AsignacionController();
         $controller->modificar();
         break;
+    case "borrarAsignacion":
+        $controller = new AsignacionController();
+        $controller->borrar();
+        break;
     case "cargarPorProyecto":
         $controller = new AsignacionController();
         $controller->cargarPorProyecto();

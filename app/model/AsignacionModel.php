@@ -54,6 +54,13 @@ class AsignacionModel
         $ps->bindParam(":ida", $asignacion->getIdasignacion());
         $ps->execute();
     }
+    public function borrar($ida)
+    {
+        $sql = "delete from asignacion where idasignacion=:ida";
+        $ps = $this->db->prepare($sql);
+        $ps->bindParam(":ida", $ida);
+        $ps->execute();
+    }
     public function cargarPorProyecto(Asignacion $asignacion)
     {
         $sql = "select * from asignacion where idproyecto=:idp";
