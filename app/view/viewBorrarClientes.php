@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include "menu.php"; ?>
+    <br>
     <?php include "menuClientes.php"; ?>
     <div>
         <h1>Borrar Clientes</h1>

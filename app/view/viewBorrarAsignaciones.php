@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include "menu.php"; ?>
+    <br>
     <?php include "menuAsignaciones.php"; ?>
     <div>
         <h1>Borrar Asignaciones</h1>

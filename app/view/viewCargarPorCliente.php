@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include "menu.php"; ?>
+    <br>
     <?php include "menuReportes.php"; ?>
     <div>
         <h1>Asignaciones por Cliente</h1>
@@ -21,7 +22,7 @@
             <input type="submit" value="Ver Asignaciones">
         </form>
         <?php if (isset($asignaciones)) { ?>
-        <button type="button" onclick="table.print()">Imprimir reporte</button>
+        <button type="button" onclick="window.print()">Imprimir reporte</button>
         <table border="1">
             <thead>
                 <tr>

@@ -26,6 +26,9 @@ switch ($accion) {
         session_destroy();
         header("Location: index.php?accion=validarUsuario");
         exit;
+    case "cargarReportes":
+        require_once "view/menuReportes.php";
+        break;
     case "guardarProyecto":
         $controller = new ProyectoController();
         $controller->guardar();

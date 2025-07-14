@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include "menu.php"; ?>
+    <br>
     <?php include "menuReportes.php"; ?>
     <div>
         <h1>Asignaciones por Proyecto</h1>

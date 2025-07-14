@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php include "menu.php"; ?>
+    <br>
     <?php include "menuProyectos.php"; ?>
     <div>
         <h1>Modificar Proyectos</h1>
