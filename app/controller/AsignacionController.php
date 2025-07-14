@@ -72,5 +72,37 @@ class AsignacionController
             require_once "view/viewBorrarAsignaciones.php";
         }
     }
+
+    public function cargarPorProyecto()
+    {
+        $proyectoModel = new ProyectoModel();
+        $proyectos = $proyectoModel->cargar();
+        $asignaciones = null;
+        $idProyectoSeleccionado = null;
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["txtIdp"])) {
+            $model = new AsignacionModel();
+            $asignacion = new Asignacion();
+            $asignacion->setIdproyecto($_POST["txtIdp"]);
+            $asignaciones = $model->cargarPorProyecto($asignacion);
+            $idProyectoSeleccionado = $_POST["txtIdp"];
+        }
+        require_once "view/viewCargarPorProyecto.php";
+    }
+
+    public function cargarPorCliente()
+    {
+        $clienteModel = new ClienteModel();
+        $clientes = $clienteModel->cargar();
+        $asignaciones = null;
+        $idClienteSeleccionado = null;
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["txtIdc"])) {
+            $model = new AsignacionModel();
+            $asignacion = new Asignacion();
+            $asignacion->setIdcliente($_POST["txtIdc"]);
+            $asignaciones = $model->cargarPorCliente($asignacion);
+            $idClienteSeleccionado = $_POST["txtIdc"];
+        }
+        require_once "view/viewCargarPorCliente.php";
+    }
 }
 ?>

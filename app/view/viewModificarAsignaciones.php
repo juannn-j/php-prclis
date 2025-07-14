@@ -22,9 +22,9 @@
             <input type="date" name="txtFend" placeHolder="Fecha Final">
             <select name="txtEst" id="txtEst">
                 <option>Seleccione Estado</option>
-                <option value="activo">Activo</option>
-                <option value="pausado">Pausado</option>
-                <option value="terminado">Terminado</option>
+                <option value="En progreso">En progreso</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="Completado">Completado</option>
             </select>
             <select name="cbxIdp" id="cbxIdp">
                 <option>Seleccione Proyecto</option>
