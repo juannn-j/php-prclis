@@ -1,4 +1,4 @@
-# PHP Clients
+# PHP Gestion de Clientes y Proyectos
 
 Tema: Administrar sistemas de informacion Backend.
 Objetivo: Usa PHP, PDO, MYSQL o POSTGRES, POO, MVC y otras tecnologias para crear una pagina web.
@@ -17,6 +17,21 @@ El cliente necesita de los siguientes modulos
 - PDO para la conceccion a la base de datos.
 - Funciones de seguridad.
 - etc.
+
+## Ejecucion
+
+- Instalar Docker Desktop (solo windows)
+- Levantamiento de la aplicacion:
+  ```bash
+  docker-compose build --no-cache
+  docker-compose up -d
+  ```
+- Para dejar de ejecutar la aplicacion escribir:
+  ```bash
+  docker-compose down -v
+  ```
+- acceso a pgadmin ...
+
 
 ## Imagenes
 
